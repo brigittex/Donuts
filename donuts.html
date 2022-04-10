@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| ----- 🍩 Donuts 🍩 ----- |</title>
+    <style>
+      body {
+        background: radial-gradient(
+          328px at 2.9% 15%,
+          rgb(191, 224, 251) 0%,
+          rgb(232, 233, 251) 25.8%,
+          rgb(252, 239, 250) 50.8%,
+          rgb(234, 251, 251) 77.6%,
+          rgb(240, 251, 244) 100.7%
+        );
+        background-repeat: no-repeat;
+        color: rgb(94, 163, 142);
+        font-family: Georgia, "Times New Roman", Times, serif;
+        height: 100%;
+        margin: 0;
+        text-align: center;
+      }
+      button {
+        background-color: #e5e9fb;
+        border: 5px dotted #adbcff;
+        border-radius: 30px;
+        box-shadow: 0px 8px 8px 0px rgb(37 39 89 / 8%);
+        color: rgb(55, 91, 255);
+        display: block;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 15px;
+        margin: 30px auto;
+        padding: 10px 24px;
+        transition: all 200ms ease-in-out;
+      }
+      button:hover {
+        background-color: #e6c5ce;
+        border: 5px dotted #f0fbf4;
+        cursor: pointer;
+      }
+      h1 {
+        border: 5px dotted #adbcff;
+        border-radius: 30px;
+        font-size: 40px;
+        margin: 60px 100px 20px;
+        padding: 20px 0;
+        text-shadow: 2px 13px 15px rgba(94, 163, 142, 0.5);
+      }
+      h2 {
+        font-weight: normal;
+        line-height: 20px;
+      }
+      hr {
+        border-top: 5px dotted #adbcff;
+        margin: 40px 100px;
+      }
+      img {
+        border-radius: 60px;
+        display: block;
+        margin: 20px auto;
+        max-width: 38%;
+      }
+      li {
+        border-radius: 10px;
+        color: rgb(55, 91, 255);
+        margin: 0 auto;
+        max-width: 400px;
+        transition: all 100ms ease-in-out;
+      }
+      li:hover {
+        background: #e6c5ce;
+        cursor: no-drop;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .footer {
+        color: rgb(99, 99, 99);
+        font-family: monospace;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Let's Talk about Donuts 🍩</h1>
+    <h2>
+      Help us gather data on everyone's favourite treat by answering this quick
+      question!
+    </h2>
+    <img
+      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/013/661/original/d8e1fe04e0bfb652630b414a03e9165b.jpg?1627056775"
+      alt="pastel coloured donuts"
+    />
+    <!--First Question-->
+    <h3>Which donut do you like best?</h3>
+    <ul>
+      <li>Boston Cream 🎂</li>
+      <li>Cinnamon Sugar 🥧</li>
+      <li>Double Chocolate 🍫</li>
+      <li>Vanilla Dip 🍭</li>
+    </ul>
+    <button class="donutButton">Vote for my Favourite Donut 🍩</button>
+    <!--Link to Cool Info-->
+    <span>Do you know when National Doughnut Day is?</span>
+    <a
+      href="https://en.wikipedia.org/wiki/National_Doughnut_Day"
+      target="_blank"
+    >
+      <strong>Find out here!</strong>
+    </a>
+    <hr />
+    <!--Bonus Question-->
+    <p>
+      Want to help us gather more data? Answer this bonus question for us too!
+    </p>
+    <h4>Bonus Question: How do you spell this tasty treat's name?</h4>
+    <ul>
+      <li>Donut</li>
+      <li>Doughnut</li>
+    </ul>
+    <button class="spellingButton">Vote for my Spelling ✅</button>
+    <!--Footer-->
+    <div class="footer">
+      This page was built by <strong>Brigitte Giguère</strong> 🍁
+      <br />
+      <em> Happy Coding! </em>👩🏻‍💻
+    </div>
+
+    <script>
+      function dataCleaning(data) {
+        data = data.toLowerCase();
+        data = data.trim();
+        return data;
+      }
+      function headerUpdate() {
+        h1 = document.querySelector("h1");
+        h1.innerHTML = `Thanks for talking to us about donuts! 🍩`;
+      }
+      function donutVoting() {
+        alert(`You are voting for your favourite donut!🍩`);
+        let donutVote = prompt(`Which donut is your favourite?`);
+
+        if (donutVote) {
+          //checking if user entered something
+          let drawChoice = prompt(
+            `Would you like to be entered into a prize draw for free donuts? (Y/N)`
+          );
+          drawChoice = dataCleaning(drawChoice);
+          if (drawChoice === "y") {
+            let name = prompt(`What is your name?`);
+            let email = prompt(`What is your email adress?`);
+            if (name && email) {
+              //checking if a name and an email address were entered
+              alert(
+                `Thanks for voting, ${name}! You have been added to the draw! 👌🎉`
+              );
+            } else {
+              if (name) {
+                //checking if only a name was entered
+                alert(`Thanks for voting, ${name}!`);
+              }
+            }
+          } else {
+            //if they do not want to enter the draw
+            alert(`No problem! Thanks for voting on your favourite donut 🍩`);
+          }
+          headerUpdate();
+        }
+      }
+      function spellingVoting() {
+        alert(`You are voting for donut/doughnut spelling!`);
+        let spellingVote = prompt(
+          `Which spelling do you use? Donut or Doughnut?`
+        );
+        spellingVote = dataCleaning(spellingVote);
+        if (spellingVote === "donut" || spellingVote === "doughnut") {
+          alert(`Thanks for voting!`);
+          headerUpdate();
+        }
+      }
+
+      let donutButton = document.querySelector(".donutButton");
+      donutButton.addEventListener("click", donutVoting);
+      let spellingButton = document.querySelector(".spellingButton");
+      spellingButton.addEventListener("click", spellingVoting);
+    </script>
+  </body>
+</html>
